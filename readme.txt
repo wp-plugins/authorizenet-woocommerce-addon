@@ -1,6 +1,6 @@
 ==== Authorize.Net WooCommerce Addon ====
 Contributors: nazrulhassanmca
-Tags: woocommerce, authorize.net, woocommerce addon ,authorize.net for woocommerce,authorize.net for wordpress,credit card payment with stripe
+Tags: woocommerce, authorize.net, woocommerce addon ,authorize.net for woocommerce,authorize.net for wordpress,credit card payment with Authorize.Net,authorize.net for woocommerce
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=nazrulhassan@ymail.com&item_name=Donation+Authorize.Net+Woocommerce+Addon
 Requires at least: 3.8.0
 Author: nazrulhassanmca
