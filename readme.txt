@@ -23,6 +23,7 @@ This plugin uses AIM (Advance Integration Module) PHP SDK from Authorize.Net® B
 4. Adds Transaction ID, Authorization Code, Response Reason to Order Note.
 5. Can be customized easily.
 6. Bundles with Official Authorize.Net® AIM Libraries.
+7. Can work with test/sandbox Authorize.Net accounts for testing purpose.
 
 
 
@@ -39,7 +40,7 @@ This plugin uses AIM (Advance Integration Module) PHP SDK from Authorize.Net® B
 2. Activate 'Authorize.Net WooCommerce Addon' from wp plugin lists in admin area
 3. Plugin will appear in settings of woocommerce
 4. You can set the addon settings from wocommmerce->settings->Checkout->Authorize.Net Cards Settings
-5. You can check for Testing Card No Here http://developer.authorize.net/faqs/#testccnumbers
+
 
 == Frequently Asked Questions ==
 
@@ -49,7 +50,7 @@ This plugin uses AIM (Advance Integration Module) PHP SDK from Authorize.Net® B
 4. This plugin readily works on developmentment server.
 5. This plugin does not requires SSL.
 6. This plugin does not store Card Details anywhere.
-
+7. You can check for Testing Card No Here http://developer.authorize.net/faqs/#testccnumbers
 
 == Changelog ==
 This is first version no known errors found
