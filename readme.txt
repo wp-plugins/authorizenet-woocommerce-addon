@@ -37,7 +37,7 @@ This plugin uses AIM (Advance Integration Module) PHP SDK from Authorize.Net® B
 5. This plugin does not requires SSL.
 6. This plugin does not store Card Details anywhere.
 
-== Features ==
+= Features =
 
 1. Very Simple Clean Code plugin to add a Authorize.Net payment method to woocommerce
 2. No technical skills needed.
