@@ -14,6 +14,19 @@ This plugin is an addon for WooCommerce to implement a payment method  for accep
 
 This plugin uses AIM (Advance Integration Module) PHP SDK from Authorize.Net® Bundled with plugin
 
+
+
+= Features =
+1. Very Simple Clean Code plugin to add a Authorize.Net payment method to woocommerce
+2. No technical skills needed.
+3. Prerequisite visualized on screenshots.
+4. Adds Transaction ID, Authorization Code, Response Reason to Order Note.
+5. Can be customized easily.
+6. Bundles with Official Authorize.Net® AIM Libraries.
+
+
+
+
 == Screenshots ==
 
 1. Screenshot-1 - Api Key Location 
@@ -36,16 +49,6 @@ This plugin uses AIM (Advance Integration Module) PHP SDK from Authorize.Net® B
 4. This plugin readily works on developmentment server.
 5. This plugin does not requires SSL.
 6. This plugin does not store Card Details anywhere.
-
-== Features ==
-
-1. Very Simple Clean Code plugin to add a Authorize.Net payment method to woocommerce
-2. No technical skills needed.
-3. Prerequisite visualized on screenshots.
-4. Adds Transaction ID, Authorization Code, Response Reason to Order Note.
-5. Can be customized easily.
-6. Bundles with Official Authorize.Net® AIM Libraries.
-
 
 
 == Changelog ==
