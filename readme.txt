@@ -22,17 +22,14 @@ This plugin uses AIM (Advance Integration Module) PHP SDK from Authorize.Net® B
 
 == Installation ==
 
-1) Upload 'authorize.net-woocommerce-addon' folder to the '/wp-content/plugins/' directory
-
-2) Activate 'Authorize.Net WooCommerce Addon' from wp plugin lists in admin area
-
-3) Plugin will appear in settings of woocommerce
-
-4) You can set the addon settings from wocommmerce->settings->Checkout->Authorize.Net Cards Settings
-
-5) You can check for Testing Card No Here http://developer.authorize.net/faqs/#testccnumbers
+1. Upload 'authorize.net-woocommerce-addon' folder to the '/wp-content/plugins/' directory
+2. Activate 'Authorize.Net WooCommerce Addon' from wp plugin lists in admin area
+3. Plugin will appear in settings of woocommerce
+4. You can set the addon settings from wocommmerce->settings->Checkout->Authorize.Net Cards Settings
+5. You can check for Testing Card No Here http://developer.authorize.net/faqs/#testccnumbers
 
 == Frequently Asked Questions ==
+
 1) You need to have woocoommerce plugin installed to make this plugin work.
 
 2) You need to follow Authorize.Net -> Accounts ->  	API Login ID and Transaction Key  in account to Obtain Api key & transaction key
