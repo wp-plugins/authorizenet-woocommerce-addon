@@ -44,7 +44,7 @@ This plugin uses AIM (Advance Integration Module) PHP SDK from Authorize.Net® B
 3. Prerequisite visualized on screenshots.
 4. Adds Transaction ID, Authorization Code, Response Reason to Order Note.
 5. Can be customized easily.
-6. Bundled with Official Authorize.Net® AIM Libraries.
+6. Bundles with Official Authorize.Net® AIM Libraries.
 
 
 
