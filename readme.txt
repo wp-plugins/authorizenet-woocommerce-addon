@@ -26,7 +26,7 @@ This plugin uses AIM (Advance Integration Module) PHP SDK from Authorize.Net® B
 5. Can be customized easily.
 6. Bundles with Official Authorize.Net® AIM Libraries.
 7. Can work with sandbox/live Authorize.Net accounts for testing purpose.
-
+8. This plugin only supports USD as currency.
 
 
 
