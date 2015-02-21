@@ -6,7 +6,7 @@ Tags: woocommerce, authorize.net, woocommerce addon ,authorize.net for woocommer
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=nazrulhassan@ymail.com&item_name=Donation+Authorize.Net+Woocommerce+Addon
 Requires at least: 3.8.0
 Author: nazrulhassanmca
-Tested up to: 4.1.0 & Woocommerce 2.3
+Tested up to: 4.1.1 & Woocommerce 2.3
 Stable tag: 1.0
 License: GPLv2
 
