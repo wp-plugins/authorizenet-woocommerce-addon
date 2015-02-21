@@ -1,4 +1,4 @@
-==== Authorize.Net WooCommerce Addon ====
+==== Authorize.Net Payment Gateway WooCommerce Addon ====
 Contributors: nazrulhassanmca
 Plugin Name: Authorize.Net WooCommerce Addon
 Plugin URI: https://wordpress.org/plugins/authorizenet-woocommerce-addon/
