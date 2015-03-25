@@ -204,7 +204,6 @@ if(class_exists('WC_Payment_Gateway'))
 			else 
 			{
 				$wc_order->add_order_note( __( 'Authorize.Net payment failed.'.$response->response_reason_text.'--'.$response->error_message, 'woocommerce' ) );
-				//$woocommerce->add_error( __( 'Sorry, Error.'.$response->error_message, 'woocommerce' ) );
 				wc_add_notice($response->error_message, $notice_type = 'error' );
 			}
 		
@@ -213,7 +212,6 @@ if(class_exists('WC_Payment_Gateway'))
 		else 
 		{
 			$wc_order->add_order_note( __( 'Authorize.Net payment failed.'.$response->response_reason_text.'--'.$response->error_message, 'woocommerce' ) );
-			//$woocommerce->add_error( __( 'Sorry, Error.'.$response->error_message, 'woocommerce' ) );
 			wc_add_notice($response->error_message, $notice_type = 'error' );
 		}
 		
