@@ -8,7 +8,7 @@
  * Author URI: https://nazrulhassan.wordpress.com/
  * License: GPLv2
  */
- 
+
 function authorizenet_init()
 {
 
@@ -204,7 +204,8 @@ if(class_exists('WC_Payment_Gateway'))
 			else 
 			{
 				$wc_order->add_order_note( __( 'Authorize.Net payment failed.'.$response->response_reason_text.'--'.$response->error_message, 'woocommerce' ) );
-				$woocommerce->add_error( __( 'Sorry, Error.'.$response->error_message, 'woocommerce' ) );
+				//$woocommerce->add_error( __( 'Sorry, Error.'.$response->error_message, 'woocommerce' ) );
+				wc_add_notice($response->error_message, $notice_type = 'error' );
 			}
 		
 		
@@ -212,12 +213,13 @@ if(class_exists('WC_Payment_Gateway'))
 		else 
 		{
 			$wc_order->add_order_note( __( 'Authorize.Net payment failed.'.$response->response_reason_text.'--'.$response->error_message, 'woocommerce' ) );
-			$woocommerce->add_error( __( 'Sorry, Error.'.$response->error_message, 'woocommerce' ) );
+			//$woocommerce->add_error( __( 'Sorry, Error.'.$response->error_message, 'woocommerce' ) );
+			wc_add_notice($response->error_message, $notice_type = 'error' );
 		}
 		
 		} // end of function process_payment()
 
-	}  // end of class WC_Stripe_Gateway
+	}  // end of class WC_Authorizenet_Gateway
 
 } // end of if class exist WC_Gateway
 
