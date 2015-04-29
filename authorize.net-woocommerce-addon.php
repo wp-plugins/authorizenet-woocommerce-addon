@@ -149,6 +149,13 @@ if(class_exists('WC_Payment_Gateway'))
 	        <?php  
 		} // end of public function payment_fields()
 
+		
+		// Function to check credit card 
+		
+		// End function to check credit card 
+		
+
+
 		public function process_payment( $order_id )
 		{
 		global $error;

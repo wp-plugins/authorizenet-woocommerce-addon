@@ -4,9 +4,9 @@ Plugin Name: Authorize.Net WooCommerce Addon
 Plugin URI: https://wordpress.org/plugins/authorizenet-woocommerce-addon/
 Tags: woocommerce, authorize.net, woocommerce addon ,authorize.net for woocommerce,authorize.net for wordpress,credit card payment with Authorize.Net,authorize.net for woocommerce,authorize.net payment gateway for woocommerce
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=nazrulhassan@ymail.com&item_name=Donation+Authorize.Net+Woocommerce+Addon
-Requires at least: 3.8.0
+Requires at least: 4.0
 Author: nazrulhassanmca
-Tested up to: 4.1.1 & Woocommerce 2.3.5
+Tested up to: 4.2.1 & Woocommerce 2.3.8
 Stable tag: 1.0
 License: GPLv2
 
@@ -54,7 +54,7 @@ This plugin uses AIM (Advance Integration Module) PHP SDK from Authorize.Net® B
 5. This plugin does not requires SSL.
 6. This plugin does not store Card Details anywhere.
 7. You can check for Testing Card No Here http://developer.authorize.net/faqs/#testccnumbers
-
+8. This plugin requires CURL installed with AsynchDNS 	Yes 
 == Changelog ==
 This is first version no known errors found
 
