@@ -6,7 +6,7 @@ Tags: woocommerce, authorize.net, woocommerce addon ,authorize.net for woocommer
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=nazrulhassan@ymail.com&item_name=Donation+Authorize.Net+Woocommerce+Addon
 Requires at least: 4.0
 Author: nazrulhassanmca
-Tested up to: 4.2.1 & Woocommerce 2.3.8
+Tested up to: 4.2.2 & Woocommerce 2.3.9
 Stable tag: 1.0
 License: GPLv2
 
@@ -56,6 +56,9 @@ However there is another plugin https://wordpress.org/plugins/authorizenet-wooco
 6. This plugin does not store Card Details anywhere.
 7. You can check for Testing Card No Here http://developer.authorize.net/faqs/#testccnumbers
 8. This plugin requires CURL installed with AsynchDNS 	Yes 
+9. This plugin do not support sending customer details to authorize.net or sending them in mail by authorize.net receipt rather it
+is designed to send wocommerce orders & store customer details in wocommerce order if you want to send customer details to authorize.net 
+you need to use https://wordpress.org/plugins/authorizenet-woocommerce-lightweight-addon  Instead for this
 == Changelog ==
 This is first version no known errors found
 
