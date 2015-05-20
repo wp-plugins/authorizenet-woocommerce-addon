@@ -55,7 +55,7 @@ However there is another plugin https://wordpress.org/plugins/authorizenet-wooco
 5. This plugin does not requires SSL.
 6. This plugin does not store Card Details anywhere.
 7. You can check for Testing Card No Here http://developer.authorize.net/faqs/#testccnumbers
-8. This plugin requires CURL installed with AsynchDNS 	Yes 
+8. This plugin requires CURL 
 9. This plugin do not support sending customer details to authorize.net or sending them in mail by authorize.net receipt rather it
 is designed to send wocommerce orders & store customer details in wocommerce order if you want to send customer details to authorize.net 
 you need to use https://wordpress.org/plugins/authorizenet-woocommerce-lightweight-addon  Instead for this
