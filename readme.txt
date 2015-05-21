@@ -29,6 +29,7 @@ However there is another plugin https://wordpress.org/plugins/authorizenet-wooco
 7. Can work with sandbox/live Authorize.Net accounts for testing purpose.
 8. This plugin currently **Supports accepting in USD**.
 9. This plugin **does not store Credit Card Details**.
+10. This plugin passes order id as Invoice ID to Authorize.Net®
 10. MD5 Hash not neccesary as this plugin uses AIM http://developer.authorize.net/faqs/#md5
 
 
@@ -37,6 +38,8 @@ However there is another plugin https://wordpress.org/plugins/authorizenet-wooco
 1. Screenshot-1 - Api Key Location 
 2. Screenshot-2 - Admin Settings of Addon
 3. Screenshot-3 - Checkout Page Form
+4. Screenshot-4 - Showing an order received in admin
+5. Screenshot-5 - Showing an Aithorize.Net Details 
 
 == Installation ==
 
@@ -56,13 +59,11 @@ However there is another plugin https://wordpress.org/plugins/authorizenet-wooco
 6. This plugin does not store Card Details anywhere.
 7. You can check for Testing Card No Here http://developer.authorize.net/faqs/#testccnumbers
 8. This plugin requires CURL 
-9. This plugin do not support sending customer details to authorize.net or sending them in mail by authorize.net receipt rather it
-is designed to send wocommerce orders & store customer details in wocommerce order if you want to send customer details to authorize.net 
-you need to use https://wordpress.org/plugins/authorizenet-woocommerce-lightweight-addon  Instead for this
-10. This plugin does not support Pre Order or Subscriptions 
-11. This plugin does not support Refunds in woocommmerce interface
+9. This plugin does not support Pre Order or Subscriptions 
+10. This plugin does not support Refunds in woocommmerce interface
 == Changelog ==
-This is first version no known errors found
+
+1. Passing of Billing address & shipping address to authorize.net has been fixed.
 
 == Upgrade Notice == 
 This is first version no known notices yet

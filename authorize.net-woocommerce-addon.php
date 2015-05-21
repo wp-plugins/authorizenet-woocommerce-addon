@@ -150,21 +150,38 @@ if(class_exists('WC_Payment_Gateway'))
 		} // end of public function payment_fields()
 
 		
-		// Function to check credit card 
+		// Function to check IP
 		
-		// End function to check credit card 
+		function get_client_ip() 
+		{
+			$ipaddress = '';
+			if (getenv('HTTP_CLIENT_IP'))
+				$ipaddress = getenv('HTTP_CLIENT_IP');
+			else if(getenv('HTTP_X_FORWARDED_FOR'))
+				$ipaddress = getenv('HTTP_X_FORWARDED_FOR');
+			else if(getenv('HTTP_X_FORWARDED'))
+				$ipaddress = getenv('HTTP_X_FORWARDED');
+			else if(getenv('HTTP_FORWARDED_FOR'))
+				$ipaddress = getenv('HTTP_FORWARDED_FOR');
+			else if(getenv('HTTP_FORWARDED'))
+				$ipaddress = getenv('HTTP_FORWARDED');
+			else if(getenv('REMOTE_ADDR'))
+				$ipaddress = getenv('REMOTE_ADDR');
+			else
+				$ipaddress = 'UNKNOWN';
+			return $ipaddress;
+		}
 		
-
+		// End function to check IP 
+		
+		
 
 		public function process_payment( $order_id )
 		{
 		global $error;
 		global $woocommerce;
-		$wc_order 	= new WC_Order( $order_id );
-		$grand_total 	= $wc_order->order_total;
-
-		
-	
+		$wc_order 			= new WC_Order( $order_id );
+				
 		if(AUTHORIZE_NET_SANDBOX == 'yes')
 		{
 			define("AUTHORIZENET_API_LOGIN_ID",    $this->authorizenet_apilogin );
@@ -184,10 +201,39 @@ if(class_exists('WC_Payment_Gateway'))
 		$cvc              = sanitize_text_field($_POST['authorizenet_cardcvv']); 
 		
 		$sale = new AuthorizeNetAIM;
-		$sale->amount     = $grand_total;
+		$sale->amount     = $wc_order->order_total;;
 		$sale->card_num   = $card_num;
 		$sale->exp_date   = $exp_year.'/'.$exp_month;
 		$sale->card_code  = $cvc; 
+		
+		$customer = (object)array();
+		$customer->first_name 		= $wc_order->billing_first_name;
+		$customer->last_name 		= $wc_order->billing_last_name;
+		$customer->company 			= $wc_order->billing_company;
+		$customer->address 			= $wc_order->billing_address_1 .' '. $wc_order->billing_address_2;
+		$customer->city 			= $wc_order->billing_city;
+		$customer->state 			= $wc_order->billing_state;
+		$customer->zip 			= $wc_order->billing_postcode;
+		$customer->country 			= $wc_order->billing_country;
+		$customer->phone 			= $wc_order->billing_phone;
+		$customer->email 			= $wc_order->billing_email;
+		$customer->cust_id 			= $wc_order->user_id;
+		$customer->customer_ip 		= $this->get_client_ip();
+		$customer->invoice_num 		= '#'.$order_id;
+		
+		$customer->ship_to_first_name	= $wc_order->shipping_first_name;
+		$customer->ship_to_last_name	= $wc_order->shipping_last_name;
+		$customer->ship_to_company    = $wc_order->shipping_company;
+		$customer->ship_to_address	= $wc_order->shipping_address_1.' '. $wc_order->shipping_address_2;
+		$customer->ship_to_city		= $wc_order->shipping_city;
+		$customer->ship_to_state		= $wc_order->shipping_state;
+		$customer->ship_to_zip		= $wc_order->shipping_postcode;
+		$customer->ship_to_country	= $wc_order->shipping_country;
+		
+		
+		$sale->setFields($customer);
+		
+		
 		
 		$response = $sale->authorizeAndCapture();
 		
@@ -202,7 +248,7 @@ if(class_exists('WC_Payment_Gateway'))
 			{
 			
 			$wc_order->add_order_note( __( $response->response_reason_text. 'on'.date("d-m-Y h:i:s e"). 'with Transaction ID = '.$transaction_id.' using '.$transaction_type.' and authorization code '.$response->authorization_code , 'woocommerce' ) );
-			$wc_order->payment_complete();
+			$wc_order->payment_complete($transaction_id);
 				return array (
 				  'result'   => 'success',
 				  'redirect' => $this->get_return_url( $wc_order ),
