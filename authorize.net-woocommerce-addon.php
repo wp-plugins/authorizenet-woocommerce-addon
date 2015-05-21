@@ -219,7 +219,7 @@ if(class_exists('WC_Payment_Gateway'))
 		$customer->email 			= $wc_order->billing_email;
 		$customer->cust_id 			= $wc_order->user_id;
 		$customer->customer_ip 		= $this->get_client_ip();
-		$customer->invoice_num 		= '#'.$order_id;
+		$customer->invoice_num 		= 'Order #'.$order_id;
 		
 		$customer->ship_to_first_name	= $wc_order->shipping_first_name;
 		$customer->ship_to_last_name	= $wc_order->shipping_last_name;
