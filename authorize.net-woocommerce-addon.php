@@ -39,8 +39,10 @@ if(class_exists('WC_Payment_Gateway'))
 		$this->authorizenet_apilogin        = $this->get_option( 'authorizenet_apilogin' );
 		$this->authorizenet_transactionkey  = $this->get_option( 'authorizenet_transactionkey' );
 		$this->authorizenet_sandbox         = $this->get_option( 'authorizenet_sandbox' ); 
+		$this->authorizenet_authorize_only  = $this->get_option( 'authorizenet_authorize_only' ); 
 
-		define("AUTHORIZE_NET_SANDBOX", ($this->authorizenet_sandbox =='yes'? true : false));
+		define("AUTHORIZE_NET_SANDBOX", ($this->authorizenet_sandbox 	   =='yes'? true : false));
+		define("AUTHORIZE_ONLY"		, ($this->authorizenet_authorize_only =='yes'? true : false));
 
 		add_action( 'woocommerce_update_options_payment_gateways_' . $this->id, array( $this, 'process_admin_options' ) );
 
@@ -90,15 +92,24 @@ if(class_exists('WC_Payment_Gateway'))
 		  'desc_tip'      => true,
 		  'placeholder' => 'Authorize.Net Transaction Key'
 		  ),
-
 		
 		'authorizenet_sandbox' => array(
 		  'title'       => __( 'Authorize.Net sandbox', 'woocommerce' ),
 		  'type'        => 'checkbox',
-		  'label'       => __( 'Enable Authorize.Net sandbox', 'woocommerce' ),
-		  'default'     => 'no',
-		  'description' => __( 'If checked its in sanbox mode and if unchecked its in live mode', 'woocommerce' )
-		)
+		  'label'       => __( 'Enable Authorize.Net sandbox (Live Mode if Unchecked)', 'woocommerce' ),
+		  'description' => __( 'If checked its in sanbox mode and if unchecked its in live mode', 'woocommerce' ),
+		  'desc_tip'      => true,
+		  'default'     => 'no'
+		),
+		
+		'authorizenet_authorize_only' => array(
+		 'title'       => __( 'Authorize Only', 'woocommerce' ),
+		 'type'        => 'checkbox',
+		 'label'       => __( 'Enable Authorize Only Mode (Authorize & Capture If Unchecked)', 'wc-authorize-dpm' ),
+		 'description' => __( 'If checked will only authorize the credit card only upon checkout.', 'woocommerce' ),
+		 'desc_tip'      => true,
+		 'default'     => 'no',
+		),
 		
 	  );
   		}
@@ -220,7 +231,7 @@ if(class_exists('WC_Payment_Gateway'))
 		$customer->cust_id 			= $wc_order->user_id;
 		$customer->customer_ip 		= $this->get_client_ip();
 		$customer->invoice_num 		= 'Order #'.$order_id;
-		
+		$customer->description        = 'Order #'.$order_id;
 		$customer->ship_to_first_name	= $wc_order->shipping_first_name;
 		$customer->ship_to_last_name	= $wc_order->shipping_last_name;
 		$customer->ship_to_company    = $wc_order->shipping_company;
@@ -234,8 +245,15 @@ if(class_exists('WC_Payment_Gateway'))
 		$sale->setFields($customer);
 		
 		
+		if('yes' == AUTHORIZE_ONLY)
+		{
+			$response = $sale->authorizeOnly();
+		}
+		else
+		{
+			$response = $sale->authorizeAndCapture();
+		}
 		
-		$response = $sale->authorizeAndCapture();
 		
 		if ($response) 
 		{
