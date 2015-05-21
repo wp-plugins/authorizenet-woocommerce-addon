@@ -59,7 +59,8 @@ However there is another plugin https://wordpress.org/plugins/authorizenet-wooco
 9. This plugin do not support sending customer details to authorize.net or sending them in mail by authorize.net receipt rather it
 is designed to send wocommerce orders & store customer details in wocommerce order if you want to send customer details to authorize.net 
 you need to use https://wordpress.org/plugins/authorizenet-woocommerce-lightweight-addon  Instead for this
-
+10. This plugin does not support Pre Order or Subscriptions 
+11. This plugin does not support Refunds in woocommmerce interface
 == Changelog ==
 This is first version no known errors found
 
