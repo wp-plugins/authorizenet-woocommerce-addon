@@ -29,9 +29,8 @@ However there is another plugin https://wordpress.org/plugins/authorizenet-wooco
 7. Can work with sandbox/live Authorize.Net accounts for testing purpose.
 8. This plugin currently **Supports accepting in USD**.
 9. This plugin **does not store Credit Card Details**.
-10. This plugin **does not store Credit Card Details**.
-11. This plugin suppports Authorize or Authorize and Capture
-12. MD5 Hash not neccesary as this plugin uses AIM http://developer.authorize.net/faqs/#md5
+10. This plugin suppports Authorize or Authorize and Capture
+11. MD5 Hash not neccesary as this plugin uses AIM http://developer.authorize.net/faqs/#md5
 
 
 == Screenshots ==
