@@ -35,14 +35,16 @@ if(class_exists('WC_Payment_Gateway'))
 		$this->method_title     = 'Authorize.Net Cards Settings';		
 		$this->init_form_fields();
 		$this->init_settings();
+		//$this->supports                     = array(  'products',  'refunds');
 		$this->title			           = $this->get_option( 'authorizenet_title' );
 		$this->authorizenet_apilogin        = $this->get_option( 'authorizenet_apilogin' );
 		$this->authorizenet_transactionkey  = $this->get_option( 'authorizenet_transactionkey' );
 		$this->authorizenet_sandbox         = $this->get_option( 'authorizenet_sandbox' ); 
 		$this->authorizenet_authorize_only  = $this->get_option( 'authorizenet_authorize_only' ); 
+		$this->authorizenet_cardtypes       = $this->get_option( 'authorizenet_cardtypes'); 
 
 		define("AUTHORIZE_NET_SANDBOX", ($this->authorizenet_sandbox 	   =='yes'? true : false));
-		define("AUTHORIZE_ONLY"		, ($this->authorizenet_authorize_only =='yes'? true : false));
+		define("AUTHORIZENET_TRANSACTION_MODE", ($this->authorizenet_authorize_only =='yes'? true : false));
 
 		add_action( 'woocommerce_update_options_payment_gateways_' . $this->id, array( $this, 'process_admin_options' ) );
 
@@ -110,13 +112,29 @@ if(class_exists('WC_Payment_Gateway'))
 		 'desc_tip'      => true,
 		 'default'     => 'no',
 		),
+		'authorizenet_cardtypes' => array(
+			 'title'    => __( 'Accepted Cards', 'woocommerce' ),
+			 'type'     => 'multiselect',
+			 'class'    => 'chosen_select',
+			 'css'      => 'width: 350px;',
+			 'desc_tip' => __( 'Select the card types to accept.', 'woocommerce' ),
+			 'options'  => array(
+				'mastercard'       => 'MasterCard',
+				'visa'             => 'Visa',
+				'discover'         => 'Discover',
+				'amex' 		    => 'American Express',
+				'jcb'		    => 'JCB',
+				'dinersclub'       => 'Dinners Club',
+			 ),
+			 'default' => array( 'mastercard', 'visa', 'discover', 'amex' ),
+		)
 		
 	  );
   		}
 
 		public function payment_fields()
 		{			
-	?>
+		?>
 		<table>
 		    <tr>
 		    	<td><label for="authorizenet_cardno"><?php echo __( 'Card No.', 'woocommerce') ?></label></td>
@@ -160,6 +178,41 @@ if(class_exists('WC_Payment_Gateway'))
 	        <?php  
 		} // end of public function payment_fields()
 
+		/*Get Card Types*/
+		function get_card_type($number)
+		{
+		
+		    $number=preg_replace('/[^\d]/','',$number);
+		    if (preg_match('/^3[47][0-9]{13}$/',$number))
+		    {
+		        return 'amex';
+		    }
+		    elseif (preg_match('/^3(?:0[0-5]|[68][0-9])[0-9]{11}$/',$number))
+		    {
+		        return 'dinersclub';
+		    }
+		    elseif (preg_match('/^6(?:011|5[0-9][0-9])[0-9]{12}$/',$number))
+		    {
+		        return 'discover';
+		    }
+		    elseif (preg_match('/^(?:2131|1800|35\d{3})\d{11}$/',$number))
+		    {
+		        return 'jcb';
+		    }
+		    elseif (preg_match('/^5[1-5][0-9]{14}$/',$number))
+		    {
+		        return 'mastercard';
+		    }
+		    elseif (preg_match('/^4[0-9]{12}(?:[0-9]{3})?$/',$number))
+		    {
+		        return 'visa';
+		    }
+		    else
+		    {
+		        return 'unknown';
+		    }
+		}// End of getcard type function
+		
 		
 		// Function to check IP
 		
@@ -189,11 +242,24 @@ if(class_exists('WC_Payment_Gateway'))
 
 		public function process_payment( $order_id )
 		{
-		global $error;
 		global $woocommerce;
-		$wc_order 			= new WC_Order( $order_id );
+		$wc_order 	= new WC_Order( $order_id );
+		$cardtype = $this->get_card_type(sanitize_text_field($_POST['authorizenet_cardno']));
+			
+         		if(!in_array($cardtype ,$this->authorizenet_cardtypes ))
+         		{
+         			wc_add_notice('Merchant do not support accepting in '.$cardtype,  $notice_type = 'error' );
+         			return array (
+								'result'   => 'success',
+								'redirect' => WC()->cart->get_checkout_url(),
+							   );
+				die;
+         		}
+		
+		
+		
 				
-		if(AUTHORIZE_NET_SANDBOX == 'yes')
+		if('yes' == AUTHORIZE_NET_SANDBOX )
 		{
 			define("AUTHORIZENET_API_LOGIN_ID",    $this->authorizenet_apilogin );
 			define("AUTHORIZENET_TRANSACTION_KEY", $this->authorizenet_transactionkey );
@@ -218,34 +284,40 @@ if(class_exists('WC_Payment_Gateway'))
 		$sale->card_code  = $cvc; 
 		
 		$customer = (object)array();
-		$customer->first_name 		= $wc_order->billing_first_name;
-		$customer->last_name 		= $wc_order->billing_last_name;
-		$customer->company 			= $wc_order->billing_company;
-		$customer->address 			= $wc_order->billing_address_1 .' '. $wc_order->billing_address_2;
-		$customer->city 			= $wc_order->billing_city;
-		$customer->state 			= $wc_order->billing_state;
-		$customer->zip 			= $wc_order->billing_postcode;
-		$customer->country 			= $wc_order->billing_country;
-		$customer->phone 			= $wc_order->billing_phone;
-		$customer->email 			= $wc_order->billing_email;
-		$customer->cust_id 			= $wc_order->user_id;
-		$customer->customer_ip 		= $this->get_client_ip();
-		$customer->invoice_num 		= 'Order #'.$order_id;
-		$customer->description        = 'Order #'.$order_id;
-		$customer->ship_to_first_name	= $wc_order->shipping_first_name;
-		$customer->ship_to_last_name	= $wc_order->shipping_last_name;
-		$customer->ship_to_company    = $wc_order->shipping_company;
-		$customer->ship_to_address	= $wc_order->shipping_address_1.' '. $wc_order->shipping_address_2;
-		$customer->ship_to_city		= $wc_order->shipping_city;
-		$customer->ship_to_state		= $wc_order->shipping_state;
-		$customer->ship_to_zip		= $wc_order->shipping_postcode;
-		$customer->ship_to_country	= $wc_order->shipping_country;
 		
-		
+		$customer->first_name 			= $wc_order->billing_first_name;
+		$customer->last_name 			= $wc_order->billing_last_name;
+		$customer->company 				= $wc_order->billing_company;
+		$customer->address 				= $wc_order->billing_address_1 .' '. $wc_order->billing_address_2;
+		$customer->city 				= $wc_order->billing_city;
+		$customer->state 				= $wc_order->billing_state;
+		$customer->zip 				= $wc_order->billing_postcode;
+		$customer->country 				= $wc_order->billing_country;
+		$customer->phone 				= $wc_order->billing_phone;
+		$customer->email 				= $wc_order->billing_email;
+		$customer->cust_id 				= $wc_order->user_id;
+		$customer->invoice_num 			= $wc_order->get_order_number();
+		$customer->description        	= get_bloginfo('blogname').' Order #'.$wc_order->get_order_number();
+		$customer->ship_to_first_name		= $wc_order->shipping_first_name;
+		$customer->ship_to_last_name		= $wc_order->shipping_last_name;
+		$customer->ship_to_company    	= $wc_order->shipping_company;
+		$customer->ship_to_address		= $wc_order->shipping_address_1.' '. $wc_order->shipping_address_2;
+		$customer->ship_to_city			= $wc_order->shipping_city;
+		$customer->ship_to_state			= $wc_order->shipping_state;
+		$customer->ship_to_zip			= $wc_order->shipping_postcode;
+		$customer->ship_to_country		= $wc_order->shipping_country;
+		$customer->delim_char              = '|';
+		$customer->encap_char              = '';
+		$customer->customer_ip 			= $this->get_client_ip();
+		$customer->tax			     	= $wc_order->get_total_tax();
+		$customer->freight       		= $wc_order->get_total_shipping();
+		$customer->header_email_receipt 	= 'Order Receipt '.get_bloginfo('blogname');
+		$customer->footer_email_receipt 	= 'Thank you for Using '.get_bloginfo('blogname');
+
 		$sale->setFields($customer);
 		
 		
-		if('yes' == AUTHORIZE_ONLY)
+		if('yes' == AUTHORIZENET_TRANSACTION_MODE)
 		{
 			$response = $sale->authorizeOnly();
 		}
@@ -258,15 +330,18 @@ if(class_exists('WC_Payment_Gateway'))
 		if ($response) 
 		{
 
-		$transaction_id   = $response->transaction_id ; 
-		$transaction_type = $response->transaction_type;
+		$transaction_id       = $response->transaction_id ; 
+		$transaction_type 	  = $response->transaction_type;
 		$response_reason_text = $response->response_reason_text;
 		
-			if($response->approved ==1)
+			if( (1 == $response->approved) || (4 == $response->approved) )
 			{
 			
 			$wc_order->add_order_note( __( $response->response_reason_text. 'on'.date("d-m-Y h:i:s e"). 'with Transaction ID = '.$transaction_id.' using '.$transaction_type.' and authorization code '.$response->authorization_code , 'woocommerce' ) );
 			$wc_order->payment_complete($transaction_id);
+			
+			WC()->cart->empty_cart();
+			
 				return array (
 				  'result'   => 'success',
 				  'redirect' => $this->get_return_url( $wc_order ),
@@ -287,6 +362,14 @@ if(class_exists('WC_Payment_Gateway'))
 		}
 		
 		} // end of function process_payment()
+		
+		
+		public function process_refund( $order_id, $amount = null ) 
+		{
+		
+		
+		}// end of process_refund function()
+		
 
 	}  // end of class WC_Authorizenet_Gateway
 
