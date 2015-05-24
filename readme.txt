@@ -7,7 +7,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=nazrulha
 Requires at least: 4.0
 Author: nazrulhassanmca
 Tested up to: 4.2.2 & Woocommerce 2.3.9
-Stable tag: 1.0
+Stable tag: 1.0.1
 License: GPLv2
 
 == Description ==
