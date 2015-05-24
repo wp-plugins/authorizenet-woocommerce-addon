@@ -65,7 +65,7 @@ However there is another plugin https://wordpress.org/plugins/authorizenet-wooco
 
 11.Error connecting to AuthorizeNet
 
-This is a common known error you need to go to your plugins director and then navigate to following file 
+This is a common known error you need to go to your plugins directory and then navigate to following file 
 authorizenet-woocommerce-addon/lib/lib/shared/AuthorizeNetRequest.php
 On Line no 14- Change public $VERIFY_PEER = true;  to public $VERIFY_PEER = false;
 
