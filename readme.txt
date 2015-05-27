@@ -25,13 +25,13 @@ However there is another plugin https://wordpress.org/plugins/authorizenet-wooco
 3. Prerequisite visualized on screenshots.
 4. Adds Transaction ID, Authorization Code, Response Reason to Order Note.
 5. Can be customized easily.
-6. Bundles with Official Authorize.Net® AIM Libraries from http://developer.authorize.net/downloads.
+6. Bundles with <a href="http://developer.authorize.net/downloads">Official Authorize.Net® AIM Libraries</a>.
 7. Can work with sandbox/live Authorize.Net accounts for testing purpose.
 8. This plugin currently **Supports accepting in USD**.
 9. This plugin **does not store Credit Card Details**.
 10. This plugin suppports Authorize or Authorize and Capture.
 11. Feature to accept the type of card you like.
-12. MD5 Hash not neccesary as this plugin uses AIM http://developer.authorize.net/faqs/#md5
+12. <a href="http://developer.authorize.net/faqs/#md5">MD5 Hash</a> not neccesary as this plugin uses AIM
 
 
 == Screenshots ==
