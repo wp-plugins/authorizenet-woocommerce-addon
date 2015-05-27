@@ -58,12 +58,12 @@ However there is another plugin https://wordpress.org/plugins/authorizenet-wooco
 4. This plugin readily works on developmentment server.
 5. This plugin does not requires SSL.
 6. This plugin does not store Card Details anywhere.
-7. You can check for Testing Card No Here http://developer.authorize.net/faqs/#testccnumbers
+7. You can check for Testing Card No <a href="http://developer.authorize.net/faqs/#testccnumbers">Here</a> 
 8. This plugin requires CURL 
 9. This plugin does not support Pre Order or Subscriptions 
 10. This plugin does not support Refunds in woocommmerce interface
-
-11.Error connecting to AuthorizeNet
+11. Learn more on <a href="http://developer.authorize.net/api/reference/starting_guide.html">Authorization Capture Settlement Void</a>
+12.Error connecting to AuthorizeNet
 
 This is a common known error you need to go to your plugins directory and then navigate to following file 
 authorizenet-woocommerce-addon/lib/lib/shared/AuthorizeNetRequest.php
