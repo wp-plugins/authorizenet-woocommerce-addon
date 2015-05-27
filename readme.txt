@@ -62,6 +62,7 @@ However there is another plugin https://wordpress.org/plugins/authorizenet-wooco
 8. This plugin requires CURL 
 9. This plugin does not support Pre Order or Subscriptions 
 10. This plugin does not support Refunds in woocommmerce interface
+11. <a href="http://developer.authorize.net/api/reference/starting_guide.html">Learn more on Authorization Capture Settlement Void</a>
 
 11.Error connecting to AuthorizeNet
 
