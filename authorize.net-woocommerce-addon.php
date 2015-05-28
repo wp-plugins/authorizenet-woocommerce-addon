@@ -279,7 +279,7 @@ if(class_exists('WC_Payment_Gateway'))
 		$cvc              = sanitize_text_field($_POST['authorizenet_cardcvv']); 
 		
 		$sale = new AuthorizeNetAIM;
-		$sale->amount     = $wc_order->order_total;;
+		$sale->amount     = $wc_order->order_total;
 		$sale->card_num   = $card_num;
 		$sale->exp_date   = $exp_year.'/'.$exp_month;
 		$sale->card_code  = $cvc; 
