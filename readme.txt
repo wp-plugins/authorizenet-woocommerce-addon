@@ -4,10 +4,11 @@ Plugin Name: Authorize.Net WooCommerce Addon
 Plugin URI: https://wordpress.org/plugins/authorizenet-woocommerce-addon/
 Tags: woocommerce, authorize.net, woocommerce addon ,authorize.net for woocommerce,authorize.net for wordpress,credit card payment with Authorize.Net,authorize.net for woocommerce,authorize.net payment gateway for woocommerce,wordpress wocommerce authorize.net,wordpress authorize.net wocommerce
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=nazrulhassan@ymail.com&item_name=Donation+Authorize.Net+Woocommerce+Addon
-Requires at least: 4.0
+Requires at least: 4.0 & WooCommerce 2.2+
 Author: nazrulhassanmca
 Tested up to: 4.2.2 & Woocommerce 2.3.9
-Stable tag: 1.0.1
+Stable tag: 1.0.2
+Version: 1.0.2
 License: GPLv2
 
 == Description ==
@@ -15,7 +16,7 @@ License: GPLv2
 This plugin is an addon for WooCommerce to implement a payment gateway method for accepting **Credit Cards Payments** By merchants via **Authorize.Net** Gateway
 
 This plugin uses AIM (Advance Integration Module) PHP SDK from Authorize.Net® Bundled with plugin
-However there is another plugin https://wordpress.org/plugins/authorizenet-woocommerce-lightweight-addon/  which is a light weight version of this plugin as it does not uses Authorize.Net® Bundled Libraries rather uses CURL to post data to Authorize.Net® Gateway.
+However there is <a href="https://wordpress.org/plugins/authorizenet-woocommerce-lightweight-addon/">another plugin</a> which is a light weight version of this plugin as it does not uses Authorize.Net® Bundled Libraries rather uses CURL to post data to Authorize.Net® Gateway.
 
 
 
@@ -25,13 +26,12 @@ However there is another plugin https://wordpress.org/plugins/authorizenet-wooco
 3. Prerequisite visualized on screenshots.
 4. Adds Transaction ID, Authorization Code, Response Reason to Order Note.
 5. Can be customized easily.
-6. Bundles with Official Authorize.Net® AIM Libraries from http://developer.authorize.net/downloads.
-7. Can work with sandbox/live Authorize.Net accounts for testing purpose.
-8. This plugin currently **Supports accepting in USD**.
-9. This plugin **does not store Credit Card Details**.
-10. This plugin suppports Authorize or Authorize and Capture.
-11. Feature to accept the type of card you like.
-12. MD5 Hash not neccesary as this plugin uses AIM http://developer.authorize.net/faqs/#md5
+6. Bundles with <a href="http://developer.authorize.net/downloads">Official Authorize.Net® AIM Libraries</a>.
+7. Can work with Sandbox/Live Authorize.Net accounts for testing purpose.
+8. This plugin does not store **Credit Card Details**.
+9. This plugin suppports Authorize or Authorize and Capture.
+10. Feature to accept the type of card you like.
+11. <a href="http://developer.authorize.net/faqs/#md5">MD5 Hash</a> not neccesary as this plugin uses AIM
 
 
 == Screenshots ==
@@ -58,12 +58,12 @@ However there is another plugin https://wordpress.org/plugins/authorizenet-wooco
 4. This plugin readily works on developmentment server.
 5. This plugin does not requires SSL.
 6. This plugin does not store Card Details anywhere.
-7. You can check for Testing Card No Here http://developer.authorize.net/faqs/#testccnumbers
+7. You can check for Testing Card No <a href="http://developer.authorize.net/faqs/#testccnumbers">Here</a> 
 8. This plugin requires CURL 
 9. This plugin does not support Pre Order or Subscriptions 
-10. This plugin does not support Refunds in woocommmerce interface
-
-11.Error connecting to AuthorizeNet
+10. This plugin does Support Refunds in woocommmerce interface
+11. Learn more on <a href="http://developer.authorize.net/api/reference/starting_guide.html">Authorization Capture Settlement Void</a>
+12. Error connecting to AuthorizeNet
 
 This is a common known error you need to go to your plugins directory and then navigate to following file 
 authorizenet-woocommerce-addon/lib/lib/shared/AuthorizeNetRequest.php
@@ -76,7 +76,24 @@ Other Resources That Might help
 
 == Changelog ==
 
-1. Passing of Billing address & shipping address to authorize.net has been fixed.
+2015.05.29 - Version 1.0.2
 
+	1.Added feature for Refunds(settled transaction) Void(capture unsettled transaction) in WooCommerce interface
+	2.Added support to store more ordermeta like response_code,response_subcode,cavv_response etc
+	3.Updated Official Authorize.Net Libraries and ssl pem.
+	4.Fixed warning and Notices when plugin activated in WP debug mode	
+	
+2015.05.25 - Version 1.0.1
+
+	1. Added Sending Billing & Shipping Address to Authorize.Net
+	2. Added support to accept card types
+	3. Added support for authorize or authorize & capture
+	4. Added performance improvement and bugfixes
+	5. Hightlighted the issue **Error connecting to AuthorizeNet** due to verify peer of CURL
+	
+2015.02.16 - Version 1.0.0
+
+	1. First Release
+	
 == Upgrade Notice == 
-This is first version no known notices yet
+There is no upgrade notice yet
