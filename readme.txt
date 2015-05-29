@@ -27,11 +27,10 @@ However there is <a href="https://wordpress.org/plugins/authorizenet-woocommerce
 5. Can be customized easily.
 6. Bundles with <a href="http://developer.authorize.net/downloads">Official Authorize.Net® AIM Libraries</a>.
 7. Can work with Sandbox/Live Authorize.Net accounts for testing purpose.
-8. This plugin currently **Supports accepting in USD**.
-9. This plugin does not store **Credit Card Details**.
-10. This plugin suppports Authorize or Authorize and Capture.
-11. Feature to accept the type of card you like.
-12. <a href="http://developer.authorize.net/faqs/#md5">MD5 Hash</a> not neccesary as this plugin uses AIM
+8. This plugin does not store **Credit Card Details**.
+9. This plugin suppports Authorize or Authorize and Capture.
+10. Feature to accept the type of card you like.
+11. <a href="http://developer.authorize.net/faqs/#md5">MD5 Hash</a> not neccesary as this plugin uses AIM
 
 
 == Screenshots ==
