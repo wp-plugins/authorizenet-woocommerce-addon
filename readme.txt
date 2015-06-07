@@ -2,11 +2,11 @@
 Contributors: nazrulhassanmca
 Plugin Name: Authorize.Net WooCommerce Addon
 Plugin URI: https://wordpress.org/plugins/authorizenet-woocommerce-addon/
-Tags: woocommerce, authorize.net, woocommerce addon ,authorize.net for woocommerce,authorize.net for wordpress,credit card payment with Authorize.Net,authorize.net for woocommerce,authorize.net payment gateway for woocommerce,wordpress wocommerce authorize.net,wordpress authorize.net wocommerce
+Tags: woocommerce, authorize.net, woocommerce addon ,authorize.net for woocommerce,authorize.net for wordpress,credit card payment with Authorize.Net,authorize.net for woocommerce,authorize.net payment gateway for woocommerce,wordpress wocommerce authorize.net,wordpress authorize.net wocommerce,authorize.net woocommerce plugin,authorize.net aim payment,authorize.net aim plugin wordpress,authorize.net woocommerce plugin,authorize.net payment gateway plugin,authorize.net aim payment gateway plugin,authorize.net payment gateway plugin for wordpress,authorize.net payment gateway plugin for wordpress with refund option,woocommerce payment gateway authorize.net,authorize.net aim payment gateway for wooCommerce,authorize.net credit cards payments in woocommmerce
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=nazrulhassan@ymail.com&item_name=Donation+Authorize.Net+Woocommerce+Addon
 Requires at least: 4.0 & WooCommerce 2.2+
 Author: nazrulhassanmca
-Tested up to: 4.2.2 & Woocommerce 2.3.9
+Tested up to: 4.2.2 & Woocommerce 2.3.10
 Stable tag: 1.0.2
 Version: 1.0.2
 License: GPLv2
@@ -25,13 +25,14 @@ However there is <a href="https://wordpress.org/plugins/authorizenet-woocommerce
 2. No technical skills needed.
 3. Prerequisite visualized on screenshots.
 4. Adds Transaction ID, Authorization Code, Response Reason to Order Note.
-5. Can be customized easily.
-6. Bundles with <a href="http://developer.authorize.net/downloads">Official Authorize.Net® AIM Libraries</a>.
-7. Can work with Sandbox/Live Authorize.Net accounts for testing purpose.
+5. This plugin can be customized easily.
+6. This plugin bundles with <a href="http://developer.authorize.net/downloads">Official Authorize.Net® AIM Libraries</a>.
+7. This plugin can work with Sandbox/Live Authorize.Net accounts with single checkbox to put it in live/test mode
 8. This plugin does not store **Credit Card Details**.
-9. This plugin suppports Authorize or Authorize and Capture.
-10. Feature to accept the type of card you like.
-11. <a href="http://developer.authorize.net/faqs/#md5">MD5 Hash</a> not neccesary as this plugin uses AIM
+9. This plugin suppports Authorize or Authorize and Capture with single checkbox to put it in Authorize or Authorize & Capture.
+10. This plugin suppports to accept the type of card you like.
+11. This plugin does Support Refunds in woocommmerce interface
+12. <a href="http://developer.authorize.net/faqs/#md5">MD5 Hash</a> not neccesary as this plugin uses AIM
 
 
 == Screenshots ==
@@ -40,7 +41,7 @@ However there is <a href="https://wordpress.org/plugins/authorizenet-woocommerce
 2. Screenshot-2 - Admin Settings of Addon
 3. Screenshot-3 - Checkout Page Form
 4. Screenshot-4 - Showing an order received in admin
-5. Screenshot-5 - Showing an Aithorize.Net Details 
+5. Screenshot-5 - Showing an Authorize.Net Details 
 
 == Installation ==
 
@@ -55,14 +56,14 @@ However there is <a href="https://wordpress.org/plugins/authorizenet-woocommerce
 1. You need to have woocoommerce plugin installed to make this plugin work.
 2. You need to follow Authorize.Net -> Accounts ->  	API Login ID and Transaction Key  in account to Obtain Api key & transaction key
 3. This plugin works on test & live mode of Authorize.Net.
-4. This plugin readily works on developmentment server.
+4. This plugin readily works on local/developmentment server.
 5. This plugin does not requires SSL.
 6. This plugin does not store Card Details anywhere.
 7. You can check for Testing Card No <a href="http://developer.authorize.net/faqs/#testccnumbers">Here</a> 
 8. This plugin requires CURL 
 9. This plugin does not support Pre Order or Subscriptions 
-10. This plugin does Support Refunds in woocommmerce interface
-11. Learn more on <a href="http://developer.authorize.net/api/reference/starting_guide.html">Authorization Capture Settlement Void</a>
+10. Learn more on <a href="http://developer.authorize.net/api/reference/starting_guide.html">Authorization Capture Settlement Void</a>
+11. Upon refunds the items are not restocked automatically you need to use <a href="https://wordpress.org/plugins/woocommerce-auto-restore-stock/">this plugin</a> to restock automatically. 
 12. Error connecting to AuthorizeNet
 
 This is a common known error you need to go to your plugins directory and then navigate to following file 
