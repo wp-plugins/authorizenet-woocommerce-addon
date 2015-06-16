@@ -6,7 +6,7 @@ Tags: woocommerce, authorize.net, woocommerce addon ,authorize.net for woocommer
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=nazrulhassan@ymail.com&item_name=Donation+Authorize.Net+Woocommerce+Addon
 Requires at least: 4.0 & WooCommerce 2.2+
 Author: nazrulhassanmca
-Tested up to: 4.2.2 & Woocommerce 2.3.10
+Tested up to: 4.2.2 & Woocommerce 2.3.11
 Stable tag: 1.0.2
 Version: 1.0.2
 License: GPLv2
@@ -64,7 +64,8 @@ However there is <a href="https://wordpress.org/plugins/authorizenet-woocommerce
 9. This plugin does not support Pre Order or Subscriptions 
 10. Learn more on <a href="http://developer.authorize.net/api/reference/starting_guide.html">Authorization Capture Settlement Void</a>
 11. Upon refunds the items are not restocked automatically you need to use <a href="https://wordpress.org/plugins/woocommerce-auto-restore-stock/">this plugin</a> to restock automatically. 
-12. Error connecting to AuthorizeNet
+12. The server(shared or vps any ) should comply with SHA-2 certificates in order to make it work in live payment mode as its using official libraries. else you need to use <a href="https://wordpress.org/plugins/authorizenet-woocommerce-lightweight-addon/">This Plugin</a>.
+13. Error connecting to AuthorizeNet
 
 This is a common known error you need to go to your plugins directory and then navigate to following file 
 authorizenet-woocommerce-addon/lib/lib/shared/AuthorizeNetRequest.php
