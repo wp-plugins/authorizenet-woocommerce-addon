@@ -168,7 +168,7 @@ if(class_exists('WC_Payment_Gateway'))
 		    <tr>
 		    	<td><label for="authorizenet_expiration_date"><?php echo __( 'Expiration Date', 'woocommerce') ?>.</label></td>
 			<td>
-			   <select name="authorizenet_expmonth" style="height: 33px;">
+			   <select name="authorizenet_expmonth">
 			      <option value=""><?php _e( 'Month', 'woocommerce' ) ?></option>
 			      <option value='01'>01</option>
 			      <option value='02'>02</option>
@@ -183,7 +183,7 @@ if(class_exists('WC_Payment_Gateway'))
 			      <option value='11'>11</option>
 			      <option value='12'>12</option>  
 			    </select>
-			    <select name="authorizenet_expyear" style="height: 33px;">
+			    <select name="authorizenet_expyear">
 			      <option value=""><?php _e( 'Year', 'woocommerce' ) ?></option>
 			      <?php
 			      $years = array();
