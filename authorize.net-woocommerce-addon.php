@@ -482,3 +482,13 @@ if(class_exists('WC_Payment_Gateway'))
 }
 
 add_action( 'plugins_loaded', 'authorizenet_init' );
+
+
+function authorizenet_woocommerce_addon_activate() {
+
+	if(!function_exists('curl_exec'))
+	{
+		 wp_die( '<pre>This plugin requires PHP CURL library installled in order to be activated </pre>' );
+	}
+}
+register_activation_hook( __FILE__, 'authorizenet_woocommerce_addon_activate' );
