@@ -3,7 +3,7 @@
  * Plugin Name: Authorize.Net WooCommerce Addon.
  * Plugin URI: https://wordpress.org/plugins/authorizenet-woocommerce-addon/
  * Description: This plugin adds a payment option in WooCommerce for customers to pay with their Credit Cards Via Authorize.Net.
- * Version: 1.0.2
+ * Version: 1.0.3
  * Author: Syed Nazrul Hassan
  * Author URI: https://nazrulhassan.wordpress.com/
  * License: GPLv2
