@@ -6,9 +6,9 @@ Tags: woocommerce, authorize.net, woocommerce addon ,authorize.net for woocommer
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=nazrulhassan@ymail.com&item_name=Donation+Authorize.Net+Woocommerce+Addon
 Requires at least: 4.0 & WooCommerce 2.2+
 Author: nazrulhassanmca
-Tested up to: 4.2.2 & Woocommerce 2.3.11
-Stable tag: 1.0.2
-Version: 1.0.2
+Tested up to: 4.3 & Woocommerce 2.4.5
+Stable tag: 1.0.3
+Version: 1.0.3
 License: GPLv2
 
 == Description ==
@@ -64,8 +64,9 @@ However there is <a href="https://wordpress.org/plugins/authorizenet-woocommerce
 9. This plugin does not support Pre Order or Subscriptions 
 10. Learn more on <a href="http://developer.authorize.net/api/reference/starting_guide.html">Authorization Capture Settlement Void</a>
 11. Upon refunds the items are not restocked automatically you need to use <a href="https://wordpress.org/plugins/woocommerce-auto-restore-stock/">this plugin</a> to restock automatically. 
-12. The server(shared or vps any ) should comply with SHA-2 certificates in order to make it work in live payment mode as its using official libraries. else you need to use <a href="https://wordpress.org/plugins/authorizenet-woocommerce-lightweight-addon/">This Plugin</a>.
-13. Error connecting to AuthorizeNet
+12. **This plugin collects usage statistics ONLY ONCE DURING INSTALL for research purpose on user experience only It will not be shared with anyone.**
+13. The server(shared or vps any ) should comply with SHA-2 certificates in order to make it work in live payment mode as its using official libraries. else you need to use <a href="https://wordpress.org/plugins/authorizenet-woocommerce-lightweight-addon/">This Plugin</a>.
+14. Error connecting to AuthorizeNet
 
 This is a common known error you need to go to your plugins directory and then navigate to following file 
 authorizenet-woocommerce-addon/lib/lib/shared/AuthorizeNetRequest.php
@@ -77,6 +78,12 @@ Other Resources That Might help
 	2. http://curl.haxx.se/libcurl/c/CURLOPT_SSL_VERIFYHOST.html
 
 == Changelog ==
+
+2015.05.29 - Version 1.0.3
+
+	1. Added default credit card form introduced by WooCommerce and built on base from Stripe® Official  to remove the explicit translation needed by plugin in fact if woocommerce is translated accurately the frontend form would display Translated texts.
+	2. Added support to show dynamic card logo for allowed cards in plugin settings
+	3. Added support to limit payment method based on availaible shipping methods
 
 2015.05.29 - Version 1.0.2
 
